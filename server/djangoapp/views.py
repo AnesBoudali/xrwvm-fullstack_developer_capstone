@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .populate import initiate
 from django.contrib.auth import authenticate
 from .models import CarMake, CarModel
+from .restapis import get_request
 
 
 # Get an instance of a logger
@@ -149,3 +150,6 @@ def get_cars(request):
     for car_model in car_models:
         cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
     return JsonResponse({"CarModels":cars})
+
+def dealers_view(request):
+    return HttpResponse("This is the dealers view.")
